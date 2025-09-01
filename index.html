@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap"
+        rel="stylesheet">
+
+</head>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HarukI⚡ Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Open+Sans:wght@400;600&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="video-background">
+            <video id="bg-video" autoplay muted loop playsinline>
+                <source src="./✨ 🤌 Poetic Rizz 🤌 ✨ - [Hunter X Hunter] - AMV_Edit - 4K60FPS (Quick Loop).mp4"
+                    type="video/mp4">
+            </video>
+        </div>
+
+        <button id="unmute-btn">🔊 Play Music</button>
+
+
+        <nav class="navbar">
+            <ul>
+                <li><a href="#about">About</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+
+        <div class="hero-content">
+            <img src="./download.jfif" alt="Profile" class="pfp">
+            <h1 class="name">HarukI⚡</h1>
+            <p class="bio">Beginner Programmer | Anime Enthusiast 🎴</p>
+            <p class="tagline">I blend code and creativity to build projects inspired by anime aesthetics and modern
+                web design.</p>
+            <p class="tagline">I build <span id="typing"></span></p>
+
+            <div class="social">
+                <a href="https://github.com/harukiisnotme1" target="_blank" class="slide-left">
+                    <img class="svg" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg"
+                        alt="GitHub">
+                    GitHub
+                </a>
+
+                <a href="https://instagram.com/lucky_.2608" target="_blank" class="slide-right">
+                    <img class="svg" src="./instagram-1-svgrepo-com.svg" alt="Instagram">
+                    Instagram
+                </a>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section">
+        <h2>About Me</h2>
+        <p>
+            Hello! I’m <strong>HarukI⚡</strong>, a beginner programmer exploring the vast world of web development.
+            My passion for anime inspires my designs — I love mixing technology with vibrant visuals and creative
+            energy.
+        </p>
+        <p>
+            I started coding to bring my ideas to life, from simple apps to websites with unique aesthetics.
+            My goal is to improve every day, learn modern technologies, and one day build projects that others
+            will enjoy using as much as I enjoy making them.
+        </p>
+        <p>
+            Outside of coding, I’m usually watching anime, playing pc games such as PUBG CS2 GTA5 Story mode games , or
+            experimenting with new creative
+            projects 🎨.
+        </p>
+    </section>
+
+
+    <!-- Projects Section -->
+    <section id="projects" class="section">
+        <h2>Projects</h2>
+        <div class="project-grid">
+
+            <div class="project-card slide-left">
+                <h3>💻 Portfolio Website</h3>
+                <p>My first anime-inspired personal site with video backgrounds.</p>
+            </div>
+
+            <div class="project-card slide-bottom">
+                <a href="./calculator.html">
+                    <h3>🧮 Calculator App</h3>
+                    <p>A simple yet stylish calculator built using HTML, CSS, and JS.</p>
+                </a>
+            </div>
+
+            <div class="project-card slide-right">
+                <a href="./index copy.html">
+                    <h3>🧥 A Random Ecommerce site</h3>
+                    <p>Web app that shows random anime quotes, styled with neon vibes.</p>
+                </a>
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- Contact Section -->
+    <section id="contact" class="section reveal">
+        <h2>Contact</h2>
+        <p>
+            Whether you want to collaborate, share anime recommendations, or just chat about web development,
+            feel free to reach out! I’m always open to learning, connecting, and building something cool together.
+        </p>
+        <p>
+            📩 Email me at: <a href="whiteholy55@gmail.com">whiteholy55@gmail.com</a>
+        </p>
+        <p>
+            Or find me on my socials above 👆
+        </p>
+    </section>
+
+
+    <script>
+        const words = ["Websites", "Anime-inspired Designs", "Creative Projects"];
+        let i = 0, j = 0, currentWord = "", isDeleting = false;
+
+        function type() {
+            currentWord = words[i];
+            document.getElementById("typing").textContent = currentWord.substring(0, j);
+
+            if (!isDeleting && j < currentWord.length) {
+                j++;
+            } else if (isDeleting && j > 0) {
+                j--;
+            } else if (!isDeleting && j === currentWord.length) {
+                isDeleting = true;
+                setTimeout(type, 1000); // pause before deleting
+                return;
+            } else if (isDeleting && j === 0) {
+                isDeleting = false;
+                i = (i + 1) % words.length;
+            }
+
+            setTimeout(type, isDeleting ? 80 : 150);
+        }
+        type();
+
+        window.addEventListener("scroll", reveal);
+        function reveal() {
+            document.querySelectorAll(".reveal").forEach((el) => {
+                const windowHeight = window.innerHeight;
+                const elementTop = el.getBoundingClientRect().top;
+                const elementVisible = 100;
+                if (elementTop < windowHeight - elementVisible) {
+                    el.classList.add("active");
+                }
+            });
+        }
+
+        function revealOnScroll() {
+            const elements = document.querySelectorAll('.slide-left, .slide-right');
+            const windowHeight = window.innerHeight;
+            elements.forEach(el => {
+                const position = el.getBoundingClientRect().top;
+                if (position < windowHeight - 100) {
+                    el.classList.add('reveal');
+                }
+            });
+        }
+
+        window.addEventListener('scroll', revealOnScroll);
+        // Run once on page load too
+        revealOnScroll();
+
+        function revealOnScroll() {
+            const elements = document.querySelectorAll('.slide-left, .slide-right, .slide-bottom');
+            const windowHeight = window.innerHeight;
+
+            elements.forEach(el => {
+                const position = el.getBoundingClientRect().top;
+                if (position < windowHeight - 100) {
+                    el.classList.add('reveal');
+                }
+            });
+        }
+
+        window.addEventListener('scroll', revealOnScroll);
+        revealOnScroll();
+
+
+        const video = document.getElementById("bg-video");
+        const btn = document.getElementById("unmute-btn");
+
+        btn.addEventListener("click", () => {
+            if (video.muted) {
+                video.muted = false;
+                btn.textContent = "🔇 Mute Music";
+            } else {
+                video.muted = true;
+                btn.textContent = "🔊 Play Music";
+            }
+        });
+
+
+
+    </script>
+
+</body>
+
+
+</html>

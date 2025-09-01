@@ -1,0 +1,291 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ShopEase - Premium E-commerce Experience</title>
+    <meta name="description" content="Discover premium products with exceptional shopping experience">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- GSAP for animations -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="font-inter bg-gray-50">
+    <!-- Loading Screen -->
+    <div id="loading-screen" class="fixed inset-0 bg-white z-50 flex items-center justify-center">
+        <div class="animate-spin rounded-full h-16 w-16 border-b-2 border-blue-600"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="fixed w-full top-0 z-40 bg-white/95 backdrop-blur-sm border-b border-gray-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <!-- Logo -->
+                <div class="flex-shrink-0">
+                    <a href="#" class="text-2xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+                        ShopEase
+                    </a>
+                </div>
+
+                <!-- Desktop Navigation -->
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-8">
+                        <a href="#home" class="nav-link text-gray-700 hover:text-blue-600 px-3 py-2 text-sm font-medium">Home</a>
+                        <a href="#products" class="nav-link text-gray-700 hover:text-blue-600 px-3 py-2 text-sm font-medium">Products</a>
+                        <a href="#categories" class="nav-link text-gray-700 hover:text-blue-600 px-3 py-2 text-sm font-medium">Categories</a>
+                        <a href="#deals" class="nav-link text-gray-700 hover:text-blue-600 px-3 py-2 text-sm font-medium">Deals</a>
+                    </div>
+                </div>
+
+                <!-- Search Bar -->
+                <div class="hidden md:block flex-1 max-w-md mx-4">
+                    <div class="relative">
+                        <input type="text" placeholder="Search products..." 
+                               class="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-full text-sm focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        <i class="fas fa-search absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400"></i>
+                    </div>
+                </div>
+
+                <!-- Right side icons -->
+                <div class="flex items-center space-x-4">
+                    <button class="relative p-2 text-gray-600 hover:text-blue-600">
+                        <i class="fas fa-heart text-xl"></i>
+                        <span id="wishlist-count" class="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">0</span>
+                    </button>
+                    <button class="relative p-2 text-gray-600 hover:text-blue-600" id="cart-button">
+                        <i class="fas fa-shopping-cart text-xl"></i>
+                        <span id="cart-count" class="absolute -top-1 -right-1 bg-blue-600 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">0</span>
+                    </button>
+                    <button class="p-2 text-gray-600 hover:text-blue-600 md:hidden">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="relative min-h-screen flex items-center justify-center overflow-hidden">
+        <div class="absolute inset-0 z-0">
+            <div class="hero-bg"></div>
+        </div>
+        
+        <div class="relative z-10 text-center px-4 max-w-4xl mx-auto">
+            <h1 class="hero-title text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-6">
+                Discover Amazing<br>
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400">Products</span>
+            </h1>
+            <p class="hero-subtitle text-xl md:text-2xl text-gray-200 mb-8 max-w-2xl mx-auto">
+                Experience seamless shopping with our curated collection of premium products
+            </p>
+            <div class="hero-buttons space-y-4 sm:space-y-0 sm:space-x-4 sm:flex sm:justify-center">
+                <button class="shop-now-btn bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-full font-semibold transition-all duration-300 transform hover:scale-105">
+                    Shop Now
+                </button>
+                <button class="explore-btn border-2 border-white text-white px-8 py-3 rounded-full font-semibold hover:bg-white hover:text-gray-900 transition-all duration-300">
+                    Explore More
+                </button>
+            </div>
+        </div>
+
+        <!-- Scroll Indicator -->
+        <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+            <i class="fas fa-chevron-down text-white text-2xl"></i>
+        </div>
+    </section>
+
+    <!-- Categories Section -->
+    <section id="categories" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Shop by Category</h2>
+                <p class="text-lg text-gray-600">Find exactly what you're looking for</p>
+            </div>
+            
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                <div class="category-card group cursor-pointer">
+                    <div class="bg-gradient-to-br from-blue-500 to-blue-600 p-8 rounded-2xl text-center transform transition-all duration-300 group-hover:scale-105 group-hover:shadow-2xl">
+                        <i class="fas fa-laptop text-4xl text-white mb-4"></i>
+                        <h3 class="text-white font-semibold">Electronics</h3>
+                    </div>
+                </div>
+                
+                <div class="category-card group cursor-pointer">
+                    <div class="bg-gradient-to-br from-purple-500 to-purple-600 p-8 rounded-2xl text-center transform transition-all duration-300 group-hover:scale-105 group-hover:shadow-2xl">
+                        <i class="fas fa-tshirt text-4xl text-white mb-4"></i>
+                        <h3 class="text-white font-semibold">Fashion</h3>
+                    </div>
+                </div>
+                
+                <div class="category-card group cursor-pointer">
+                    <div class="bg-gradient-to-br from-green-500 to-green-600 p-8 rounded-2xl text-center transform transition-all duration-300 group-hover:scale-105 group-hover:shadow-2xl">
+                        <i class="fas fa-home text-4xl text-white mb-4"></i>
+                        <h3 class="text-white font-semibold">Home</h3>
+                    </div>
+                </div>
+                
+                <div class="category-card group cursor-pointer">
+                    <div class="bg-gradient-to-br from-red-500 to-red-600 p-8 rounded-2xl text-center transform transition-all duration-300 group-hover:scale-105 group-hover:shadow-2xl">
+                        <i class="fas fa-dumbbell text-4xl text-white mb-4"></i>
+                        <h3 class="text-white font-semibold">Sports</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section id="products" class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Featured Products</h2>
+                <p class="text-lg text-gray-600">Handpicked items just for you</p>
+            </div>
+
+            <!-- Filters -->
+            <div class="flex flex-wrap justify-center gap-4 mb-8">
+                <button class="filter-btn active bg-blue-600 text-white px-4 py-2 rounded-full" data-filter="all">All</button>
+                <button class="filter-btn bg-gray-200 text-gray-700 px-4 py-2 rounded-full hover:bg-gray-300" data-filter="electronics">Electronics</button>
+                <button class="filter-btn bg-gray-200 text-gray-700 px-4 py-2 rounded-full hover:bg-gray-300" data-filter="fashion">Fashion</button>
+                <button class="filter-btn bg-gray-200 text-gray-700 px-4 py-2 rounded-full hover:bg-gray-300" data-filter="home">Home</button>
+            </div>
+
+            <!-- Product Grid -->
+            <div id="product-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Products will be dynamically loaded here -->
+            </div>
+
+            <!-- Load More Button -->
+            <div class="text-center mt-12">
+                <button id="load-more" class="bg-gray-800 hover:bg-gray-900 text-white px-8 py-3 rounded-full font-semibold transition-all duration-300">
+                    Load More Products
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Deals Section -->
+    <section id="deals" class="py-20 bg-gradient-to-r from-blue-600 to-purple-600">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center text-white mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Hot Deals</h2>
+                <p class="text-xl opacity-90">Don't miss out on these amazing offers</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="deal-card bg-white rounded-2xl p-6 text-center transform transition-all duration-300 hover:scale-105">
+                    <div class="text-6xl mb-4">🔥</div>
+                    <h3 class="text-2xl font-bold text-gray-900 mb-2">50% OFF</h3>
+                    <p class="text-gray-600 mb-4">All Electronics</p>
+                    <button class="bg-red-500 hover:bg-red-600 text-white px-6 py-2 rounded-full font-semibold">
+                        Shop Now
+                    </button>
+                </div>
+                
+                <div class="deal-card bg-white rounded-2xl p-6 text-center transform transition-all duration-300 hover:scale-105">
+                    <div class="text-6xl mb-4">💎</div>
+                    <h3 class="text-2xl font-bold text-gray-900 mb-2">Buy 2 Get 1</h3>
+                    <p class="text-gray-600 mb-4">Fashion Collection</p>
+                    <button class="bg-purple-500 hover:bg-purple-600 text-white px-6 py-2 rounded-full font-semibold">
+                        Shop Now
+                    </button>
+                </div>
+                
+                <div class="deal-card bg-white rounded-2xl p-6 text-center transform transition-all duration-300 hover:scale-105">
+                    <div class="text-6xl mb-4">🚚</div>
+                    <h3 class="text-2xl font-bold text-gray-900 mb-2">Free Shipping</h3>
+                    <p class="text-gray-600 mb-4">Orders over $50</p>
+                    <button class="bg-green-500 hover:bg-green-600 text-white px-6 py-2 rounded-full font-semibold">
+                        Learn More
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Shopping Cart Sidebar -->
+    <div id="cart-sidebar" class="fixed right-0 top-0 h-full w-96 bg-white shadow-2xl transform translate-x-full transition-transform duration-300 z-50">
+        <div class="p-6 border-b">
+            <div class="flex justify-between items-center">
+                <h3 class="text-xl font-semibold">Shopping Cart</h3>
+                <button id="close-cart" class="text-gray-500 hover:text-gray-700">
+                    <i class="fas fa-times text-xl"></i>
+                </button>
+            </div>
+        </div>
+        
+        <div id="cart-items" class="flex-1 overflow-y-auto p-6">
+            <!-- Cart items will be loaded here -->
+        </div>
+        
+        <div class="border-t p-6">
+            <div class="flex justify-between items-center mb-4">
+                <span class="text-lg font-semibold">Total:</span>
+                <span id="cart-total" class="text-xl font-bold">$0.00</span>
+            </div>
+            <button class="w-full bg-blue-600 hover:bg-blue-700 text-white py-3 rounded-lg font-semibold transition-colors">
+                Proceed to Checkout
+            </button>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">ShopEase</h3>
+                    <p class="text-gray-400">Your trusted online shopping destination</p>
+                </div>
+                
+                <div>
+                    <h4 class="font-semibold mb-4">Quick Links</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#" class="hover:text-white">About Us</a></li>
+                        <li><a href="#" class="hover:text-white">Contact</a></li>
+                        <li><a href="#" class="hover:text-white">FAQs</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="font-semibold mb-4">Customer Service</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#" class="hover:text-white">Shipping Info</a></li>
+                        <li><a href="#" class="hover:text-white">Returns</a></li>
+                        <li><a href="#" class="hover:text-white">Size Guide</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="font-semibold mb-4">Follow Us</h4>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-facebook"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
+                <p>&copy; 2024 ShopEase. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="script.js"></script>
+</body>
+</html>
